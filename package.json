@@ -1,0 +1,37 @@
+{
+    "name": "my-app",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-redux": "^7.2.0",
+        "react-router-dom": "^5.1.2",
+        "react-scripts": "0.9.x",
+        "redux": "^4.0.5",
+        "redux-thunk": "^2.3.0"
+    },
+    "devDependencies": {
+        "@fullhuman/postcss-purgecss": "^2.1.0",
+        "autoprefixer": "^9.7.5",
+        "cross-env": "^7.0.2",
+        "cssnano": "^4.1.10",
+        "cypress": "^4.3.0",
+        "npm-run-all": "^4.1.5",
+        "postcss-cli": "^7.1.0",
+        "purgecss": "^2.1.0",
+        "tailwindcss": "^1.2.0"
+    },
+    "scripts": {
+        "build:css": "postcss src/styles/tailwind.css -o src/styles/index.css",
+        "watch:css": "postcss src/styles/tailwind.css -o src/styles/index.css --watch",
+        "env:dev": "cross-env NODE_ENV=development",
+        "env:prod": "cross-env NODE_ENV=production",
+        "react-scripts:start": "sleep 5 && react-scripts start",
+        "react-scripts:build": "react-scripts build",
+        "start": "run-p env:dev watch:css react-scripts:start",
+        "build": "run-s env:prod build:css react-scripts:build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    }
+}
