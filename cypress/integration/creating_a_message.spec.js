@@ -1,13 +1,13 @@
-describe('Creating a message', () => {
-    it('Displays the message in the list', () => {
+describe('Creating a message to convert a uppercase', () => {
+    it('Displays the message', () => {
       cy.visit('http://localhost:3000');
   
-      cy.get('[data-testid="messageText"]').type('New message');
+      cy.get('[data-testid="messageText"]').type('New text');
   
       cy.get('[data-testid="sendButton"]').click();
   
-      cy.get('[data-testid="messageText"]').should('have.value', '');
+      cy.get('[data-testid="messageTexToUpperCase"]').should('have.value', '');
   
-      cy.contains('New message');
+      cy.contains('Get New message');
     });
   });
