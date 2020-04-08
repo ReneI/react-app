@@ -1,6 +1,9 @@
 
 import React,{useState}  from 'react';
 import {useDispatch,useSelector} from 'react-redux';
+import { useToast } from '../components/toast';
+import Historical from '../components/Timeline';
+import ShowString from '../components/ShowString';
 
 import  {convert} from '../actions/inputAction';
 
@@ -17,18 +20,21 @@ import  {convert} from '../actions/inputAction';
       const [text,transform] = useState('');
       const  dispatch = useDispatch();
       const toconvert = (text) => dispatch(convert(text));
+      const toast = useToast();
+      const showToast = () => toast.add('Plase insert lowercase!');
+      const stringResults= useSelector(state=> state.input);
 
-   const handleSubmit= e => {
+   const handleSubmit= e => {      
          e.preventDefault();
 
-    if(text.trim()=== '' && text === text.toUpperCase()){
-
+    if(text === text.toUpperCase()){
+      showToast();
       return;
     }else{
-      console.log('paased');
-
+  
 
               toconvert(text);
+              transform('');
             }
         
             
@@ -36,7 +42,7 @@ import  {convert} from '../actions/inputAction';
     
 
     return (
-      <div class="h-100 w-full flex items-center justify-center bg-teal-lightest font-sans">
+      <div class="h-100 w-full flex  justify-center bg-teal-lightest font-sans">
       <div class="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
    
       <div class="mb-4">
@@ -57,14 +63,45 @@ import  {convert} from '../actions/inputAction';
         />
      
       <div className="submitButton">
-        <button type="submit">Convert to uppercase</button>
+      <button type="submit" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+Convert to uppercase</button>
 
         </div>
+
+        <ShowString
+      response={stringResults.last}
+      />
+  
+    
         </form>  </div>
        
 
       </div> 
   
+
+      <div class="max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl">
+      <div class="bg-grey-lighter px-2 py-3 border-solid border-grey-light border-b">
+   <h1> Historical</h1>
+  </div>
+  <table class="text-left w-full border-collapse">
+       <thead>
+        <tr>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">ID</th>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">String</th>
+        </tr>
+      </thead>
+      <tbody>
+      {  stringResults.textInput.length ===0 ? 'Please insert a value':( stringResults.textInput.map(value=>
+      <Historical
+      id={value.id}
+      stringUpper={value.text}
+      />))}
+
+
+</tbody>
+    </table>
+
+  </div>
     </div>
     )
   

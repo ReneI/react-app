@@ -1,9 +1,9 @@
 import React from 'react';
 const Header =() =>{
   return(  
-    <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+    <nav className="flex items-center justify-between flex-wrap bg-red-500 p-6">
   <div className="flex items-center flex-shrink-0 text-white mr-6">
-    <span className="font-semibold text-xl tracking-tight">Transform text - api</span>
+    <span className="font-semibold text-xl tracking-tight"><a href="/">Transform text - api Redux react hooks tdd</a></span>
   </div>
   <div className="block lg:hidden">
     <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
@@ -11,7 +11,7 @@ const Header =() =>{
     </button>
   </div>
   <div>
-      <a href="#" className="inline-block text-sm  px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Rene Ibarra</a>
+      <a href="/info" className="inline-block text-sm  px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Preguntas</a>
     </div>
 </nav>
   );

@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import './styles/index.css'
+import { withToastProvider } from './components/toast';
+import './styles/index.css';
+const AppWithToastProvider = withToastProvider(App);
 
 ReactDOM.render(
-  <App />,
+  <AppWithToastProvider />,
   document.getElementById('root')
 );
