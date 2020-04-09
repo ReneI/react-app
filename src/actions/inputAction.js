@@ -30,8 +30,10 @@ let nextId=0;
 
             try {
                 //get text
+                console.log(text);
               const response = await  clientAxios.get('/convert?text=' +text);
-               let getText= response.data.transformed;
+              console.log(response); 
+              let getText= response.data.transformed;
                dispatch(saveTransformed(getText));
 
                dispatch(success(getText));
@@ -41,6 +43,7 @@ let nextId=0;
                     title: 'Signed in successfully'
                   })
             } catch (err) {
+              console.error(err)
                 Toast.fire({
                     icon: 'error',
                     title: err

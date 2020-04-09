@@ -21,9 +21,9 @@ import  {convert} from '../actions/inputAction';
       const  dispatch = useDispatch();
       const toconvert = (text) => dispatch(convert(text));
       const toast = useToast();
-      const showToast = () => toast.add('Plase insert lowercase!');
+      const showToast = () => toast.add('Please insert lowercase!');
       const stringResults= useSelector(state=> state.input);
-
+      console.log(stringResults.last);
    const handleSubmit= e => {      
          e.preventDefault();
 
@@ -42,19 +42,22 @@ import  {convert} from '../actions/inputAction';
     
 
     return (
-      <div class="h-100 w-full flex  justify-center bg-teal-lightest font-sans">
-      <div class="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
+      <div className="h-100 w-full flex  justify-center bg-teal-lightest font-sans">
+      <div className="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
    
-      <div class="mb-4">
+      <div className="mb-4">
       <form
-     onSubmit={handleSubmit}>
+     onSubmit={handleSubmit}  data-testid="form">
       
-      <h1 className="text-grey-darkest">Transform</h1>
+      <h1 class="text-grey-darkest">Transform</h1>
 
         <input  className="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"
          type="text"
+         aria-label="user-name" 
+         placeholder="string"
          name="text"
          value={text}
+         data-testid="messageText"
          onChange={e=>transform(e.target.value)}
          placeholder="Test.."
 
@@ -63,7 +66,8 @@ import  {convert} from '../actions/inputAction';
         />
      
       <div className="submitButton">
-      <button type="submit" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+      <button type="submit"  data-testid="sendButton"
+ className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
 Convert to uppercase</button>
 
         </div>
@@ -90,7 +94,8 @@ Convert to uppercase</button>
           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">String</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody          data-testid="msgInit"
+ >
       {  stringResults.textInput.length ===0 ? 'Please insert a value':( stringResults.textInput.map(value=>
       <Historical
       id={value.id}
@@ -106,4 +111,4 @@ Convert to uppercase</button>
     )
   
 }
-export default InputText
+export default InputText;

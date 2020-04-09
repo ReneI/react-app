@@ -40,7 +40,7 @@ function App(){
    <Provider store={store}>
   <Header/>
 
-<div className="container">
+<div className="container  w-full md:max-w-md mx-auto pt-10">
 
 <Switch>
     <Route exact path="/" component={InputText}/>
